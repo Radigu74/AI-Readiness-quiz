@@ -1,0 +1,81 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f9fb;
+  margin: 0;
+  padding: 40px;
+  color: #333;
+}
+
+.quiz-container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  margin-bottom: 30px;
+}
+#progress {
+  height: 100%;
+  width: 0%;
+  background: #00aaff;
+  transition: width 0.4s ease;
+  border-radius: 4px;
+}
+
+.step {
+  display: none;
+  animation: slideIn 0.5s ease forwards;
+}
+.step.active {
+  display: block;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+button {
+  background: #00aaff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.result {
+  margin-top: 30px;
+  padding: 20px;
+  background: #e9f9ee;
+  border-left: 4px solid #28a745;
+}
+
+.cta-link {
+  display: inline-block;
+  margin-top: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
