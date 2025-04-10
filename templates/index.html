@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Test</title>
-  </head>
-  <body>
-    <h1>Hello from Flask 👋</h1>
-  </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Readiness Quiz</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>🚀 Is Your Business Ready for AI?</h1>
+    <div class="progress-bar"><div id="progress"></div></div>
 
+    <form id="quizForm">
+      <div class="step active">
+        <label>1. Do you use automation?</label>
+        <select name="q1">
+          <option value="extensive">Extensively</option>
+          <option value="some">Some areas</option>
+          <option value="none">Not really</option>
+        </select>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+
+      <div class="step">
+        <label>2. Team’s confidence with AI?</label>
+        <select name="q2">
+          <option value="high">Very confident</option>
+          <option value="medium">Somewhat</option>
+          <option value="low">Not confident</option>
+        </select>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+
+      <div class="step">
+        <label>3. Use of data?</label>
+        <select name="q3">
+          <option value="active">Use it actively</option>
+          <option value="collect">Collect, not use</option>
+          <option value="none">Not really</option>
+        </select>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+
+      <div class="step">
+        <label>4. Tried AI tools?</label>
+        <select name="q4">
+          <option value="yes">Yes</option>
+          <option value="testing">Just testing</option>
+          <option value="no">No</option>
+        </select>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+
+      <div class="step">
+        <label>5. Biggest challenge?</label>
+        <select name="q5">
+          <option value="use_case">No use case</option>
+          <option value="skills">Lack of skills/time</option>
+          <option value="trust">Security/trust</option>
+          <option value="starting">Just starting</option>
+        </select>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
