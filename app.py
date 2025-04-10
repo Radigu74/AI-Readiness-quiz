@@ -3,14 +3,20 @@ import openai
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# ✅ Correct name usage
 app = Flask(__name__)
 
+load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+if __name__ == "__main__":
+    print("✅ Flask is running on http://127.0.0.1:5000")
+    app.run(debug=True)
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
