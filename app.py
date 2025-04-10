@@ -1,29 +1,24 @@
 from flask import Flask, render_template, request, jsonify
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
-# ✅ Correct name usage
-app = Flask(__name__)
-
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-if __name__ == "__main__":
-    print("✅ Flask is running on http://127.0.0.1:5000")
-    app.run(debug=True)
-
-
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.json
+
     prompt = f"""
-    Based on the answers below, determine the AI readiness level (AI-Ready, In Progress, Early Stage),
-    give a short message and a CTA, and include a 3-bullet summary in markdown.
+    Based on the answers below, determine the AI readiness level (choose: "AI-Ready", "In Progress", or "Early Stage").
+    Then write a short summary message and a matching CTA.
 
     Answers:
     1. {data['q1']}
@@ -32,20 +27,27 @@ def submit():
     4. {data['q4']}
     5. {data['q5']}
 
-    Return as JSON like:
+    Return JSON like:
     {{
-      "readiness": "...",
+      "readiness": "In Progress",
       "message": "...",
       "ctaText": "...",
-      "ctaLink": "https://yourcalendar.com",
-      "summary": "..."
+      "ctaLink": "https://calendly.com/your-link"
     }}
     """
 
-  response = client.chat.completions.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        result = response.choices[0].message.content
 
-    result = eval(response.choices[0].message.content)
-    return jsonify(result)
+        return jsonify(eval(result))  # ⚠️ assuming safe JSON-like format
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    print("🚀 Flask is running at http://127.0.0.1:5000")
+    app.run(debug=True)
