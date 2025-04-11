@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from openai import OpenAI
 import os
+import json
 from dotenv import load_dotenv
 
 # Load the API key from .env
@@ -46,9 +47,13 @@ def submit():
             messages=[{"role": "user", "content": prompt}]
         )
 
-        # Safely parse GPT JSON-like reply
         raw_result = response.choices[0].message.content.strip()
-        result = eval(raw_result)  # ⚠️ You may replace with json.loads if strict JSON returned
+
+        # Safely parse GPT JSON-like reply
+        try:
+            result = json.loads(raw_result)
+        except json.JSONDecodeError:
+            return jsonify({"error": "Invalid JSON from GPT"}), 500
 
         return jsonify(result)
 
