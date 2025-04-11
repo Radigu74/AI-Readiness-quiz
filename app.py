@@ -22,25 +22,37 @@ def submit():
     try:
         data = request.json
 
-        prompt = f"""
-        Based on the answers below, determine the AI readiness level (choose: "AI-Ready", "In Progress", or "Early Stage").
-        Then write a short summary message and a matching CTA.
+prompt = f"""
+You are an expert AI readiness evaluator.
 
-        Answers:
-        1. {data['q1']}
-        2. {data['q2']}
-        3. {data['q3']}
-        4. {data['q4']}
-        5. {data['q5']}
+Based on these answers, classify the business into one of:
+- "AI-Ready"
+- "In Progress"
+- "Early Stage"
 
-        Return JSON like:
-        {{
-          "readiness": "AI-Ready",
-          "message": "You're ahead of the curve!",
-          "ctaText": "Book a free strategy session",
-          "ctaLink": "https://calendly.com/your-link"
-        }}
-        """
+Instructions:
+- Look for automation use, data usage, and team confidence as indicators.
+- AI-Ready means strong on most or all areas.
+- In Progress means some areas are strong, others need work.
+- Early Stage means minimal use or confidence in AI or data.
+
+Return ONLY valid JSON like this:
+{{
+  "readiness": "In Progress",
+  "message": "You're making progress on AI, with some good early efforts. Let's build momentum.",
+  "ctaText": "Book a free strategy session",
+  "ctaLink": "https://calendly.com/your-link"
+}}
+
+Answers:
+1. {data['q1']}
+2. {data['q2']}
+3. {data['q3']}
+4. {data['q4']}
+5. {data['q5']}
+"""
+
+
 
         response = client.chat.completions.create(
             model="gpt-4",
