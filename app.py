@@ -22,7 +22,7 @@ def submit():
     try:
         data = request.json
 
-prompt = f"""
+        prompt = f"""
 You are an expert AI readiness evaluator.
 
 Based on these answers, classify the business into one of:
@@ -51,8 +51,6 @@ Answers:
 4. {data['q4']}
 5. {data['q5']}
 """
-
-
 
         response = client.chat.completions.create(
             model="gpt-4",
