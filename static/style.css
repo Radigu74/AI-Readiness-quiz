@@ -21,6 +21,7 @@ h1 {
 }
 
 .progress-bar {
+  overflow: hidden;
   height: 8px;
   background: #eee;
   border-radius: 4px;
@@ -29,11 +30,10 @@ h1 {
 #progress {
   height: 100%;
   width: 0%;
-  background: #00aaff;
-  transition: width 0.4s ease;
-  border-radius: 4px;
+  background: linear-gradient(90deg, #00aaff, #00ffaa);
+  transition: width 0.4s ease-in-out;
+  border-radius: 999px;
 }
-
 .step {
   display: none;
   animation: slideIn 0.5s ease forwards;
@@ -61,21 +61,104 @@ button {
 .result {
   margin-top: 30px;
   padding: 20px;
-  background: #e9f9ee;
-  border-left: 4px solid #28a745;
+  background: #f0f9ff;
+  border: 2px solid #00aaff;
+  border-radius: 8px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.result h2 {
+  margin-top: 0;
+  color: #0077cc;
+}
+
+.result p {
+  font-size: 1.1rem;
 }
 
 .cta-link {
   display: inline-block;
   margin-top: 20px;
-  background: #28a745;
+  padding: 12px 20px;
+  background-color: #28a745;
   color: white;
-  padding: 10px 18px;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: bold;
   text-decoration: none;
 }
 
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
+.cta-link:hover {
+  background-color: #218838;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result.loading,
+.result.insights,
+.result.final {
+  background: #e8f6ff;
+  border: 2px solid #00aaff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.result.insights p {
+  margin: 6px 0;
+}
+
+.dots span {
+  font-size: 32px;
+  animation: blink 1.5s infinite;
+}
+
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0%, 20% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.result-box {
+  background: #f0f9ff;
+  border: 2px solid #00aaff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+  margin-top: 20px;
+}
+.readiness-title {
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+.readiness-badge {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.readiness-message {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+.cta-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.cta-button:hover {
+  background-color: #218838;
+}
+
