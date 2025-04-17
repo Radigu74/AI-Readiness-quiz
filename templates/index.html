@@ -5,56 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Readiness Quiz</title>
   <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .step { display: none; }
+    .step.active { display: block; }
+    button { cursor: pointer; }
+    #quizForm { display: none; }
+    .progress-bar {
+      background: #E0E0DB;
+      height: 10px;
+      border-radius: 4px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    #progress {
+      background: #2f5d50;
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  </style>
 </head>
 <body>
   <div class="quiz-container">
     <h1>🚀 Is Your Business Ready for AI?</h1>
     <div class="progress-bar"><div id="progress"></div></div>
+    <p class="step-counter" id="stepCounter"></p>
 
+    <!-- ✅ Step 0: Intro Screen -->
+    <div id="introScreen">
+      <h2>Welcome to the AI Readiness Quiz</h2>
+      <p>Answer 5 quick questions to see how ready your business is for AI.</p>
+      <button id="startButton" type="button">Start</button>
+    </div>
+
+      <!-- ✅ Main Quiz -->
     <form id="quizForm">
+      <!-- Step 1 -->
       <div class="step active">
         <label>1. Do you use automation?</label>
-        <select name="q1">
+        <select name="q1" required>
+          <option value="">Select</option>
           <option value="extensive">Extensively</option>
           <option value="some">Some areas</option>
           <option value="none">Not really</option>
         </select>
-        <button type="button" onclick="nextStep()">Next</button>
+        <button type="button" class="next-btn">Next</button>
       </div>
 
+      <!-- Step 2 -->
       <div class="step">
         <label>2. Team’s confidence with AI?</label>
-        <select name="q2">
+        <select name="q2" required>
+          <option value="">Select</option>
           <option value="high">Very confident</option>
           <option value="medium">Somewhat</option>
           <option value="low">Not confident</option>
         </select>
-        <button type="button" onclick="nextStep()">Next</button>
+        <button type="button" class="next-btn">Next</button>
       </div>
 
+      <!-- Step 3 -->
       <div class="step">
         <label>3. Use of data?</label>
-        <select name="q3">
+        <select name="q3" required>
+          <option value="">Select</option>
           <option value="active">Use it actively</option>
           <option value="collect">Collect, not use</option>
           <option value="none">Not really</option>
         </select>
-        <button type="button" onclick="nextStep()">Next</button>
+        <button type="button" class="next-btn">Next</button>
       </div>
 
+      <!-- Step 4 -->
       <div class="step">
         <label>4. Tried AI tools?</label>
-        <select name="q4">
+        <select name="q4" required>
+          <option value="">Select</option>
           <option value="yes">Yes</option>
           <option value="testing">Just testing</option>
           <option value="no">No</option>
         </select>
-        <button type="button" onclick="nextStep()">Next</button>
+        <button type="button" class="next-btn">Next</button>
       </div>
 
+      <!-- Step 5 -->
       <div class="step">
         <label>5. Biggest challenge?</label>
-        <select name="q5">
+        <select name="q5" required>
+          <option value="">Select</option>
           <option value="use_case">No use case</option>
           <option value="skills">Lack of skills/time</option>
           <option value="trust">Security/trust</option>
@@ -64,8 +102,15 @@
       </div>
     </form>
 
+    <!-- ✅ Result Output -->
     <div id="result" class="result"></div>
   </div>
+
+  <!-- Load your quiz logic -->
+  <script src="/static/script.js"></script>
+</body>
+</html>
+
 
   <script src="/static/script.js"></script>
 </body>
