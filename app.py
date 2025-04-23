@@ -67,10 +67,10 @@ Each question uses consistent options. Here is what they mean:
 
 ```json
 {
-  "readiness": "AI-Ready",
-  "message": "Amazing work — your business is clearly ahead in adopting AI! Let’s explore how to keep that momentum going.",
-  "ctaText": "Book a deep-dive AI session",
-  "ctaLink": "https://calendly.com/terra-advance"
+    "readiness": "AI-Ready",
+    "message": "Amazing work — your business is clearly ahead in adopting AI! Let’s keep the conversation going.",
+    "ctaText": "Contact Us",
+    "ctaLink": "/contact"
 }
 ```
 
