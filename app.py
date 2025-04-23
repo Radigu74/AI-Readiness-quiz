@@ -72,7 +72,6 @@ Each question uses consistent options. Here is what they mean:
     "ctaText": "Contact Us",
     "ctaLink": "https://www.terrapeakgroup.com/contact-form"
 }
-```
 
 ⚠️ Do **not** include any text outside of the above code block.
 """
