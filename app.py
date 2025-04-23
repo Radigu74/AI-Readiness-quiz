@@ -70,7 +70,7 @@ Each question uses consistent options. Here is what they mean:
     "readiness": "AI-Ready",
     "message": "Amazing work — your business is clearly ahead in adopting AI! Let’s keep the conversation going.",
     "ctaText": "Contact Us",
-    "ctaLink": "/contact"
+    "ctaLink": "https://www.terrapeakgroup.com/contact-form"
 }
 ```
 
@@ -84,7 +84,7 @@ Each question uses consistent options. Here is what they mean:
         4. {data['q4']}
         5. {data['q5']}
         """
-
+    
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[
