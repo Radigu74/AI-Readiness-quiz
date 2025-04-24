@@ -105,6 +105,9 @@ Each question uses consistent options. Here is what they mean:
             print("❌ Failed to extract JSON from GPT output.")
             return jsonify({"error": "GPT did not return valid JSON"}), 500
 
+        # Override the ctaLink with the static link
+        result['ctaLink'] = "https://www.terrapeakgroup.com/contact-form"
+
         return jsonify(result)
 
     except Exception as e:
